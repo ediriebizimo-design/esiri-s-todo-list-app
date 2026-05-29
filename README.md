@@ -236,9 +236,9 @@ https://todo-list-app-yourname.vercel.app
 
 ## 👤 Author
 
-**Your Name**
-- GitHub: [@your-username](https://github.com/your-username)
-- Email: your-email@example.com
+**Esiri**
+- GitHub: [@ediriebizimo-design](https://github.com/ediriebizimo-design)
+- Email: esirieediri@gmail.com
 
 ---
 
