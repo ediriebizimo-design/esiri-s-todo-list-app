@@ -6,7 +6,7 @@ A full-stack Todo List app built with the **MERN stack** (MongoDB, Express, Reac
 
 ## 🔗 Live Demo
 
-> 🚀 [View Live App]([https://esiri-s-todo-list-app.vercel.app/])
+> 🚀 [View Live App](https://esiri-s-todo-list-app.vercel.app/)
 
 ---
 
