@@ -6,7 +6,7 @@ A full-stack Todo List app built with the **MERN stack** (MongoDB, Express, Reac
 
 ## 🔗 Live Demo
 
-> 🚀 [View Live App](https://your-deployment-url.vercel.app) ← *(replace with your Vercel link after deploying)*
+> 🚀 [View Live App]([https://esiri-s-todo-list-app.vercel.app/])
 
 ---
 
@@ -90,7 +90,7 @@ Make sure you have these installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/todo-list-app.git
+git clone https://github.com/ediriebizimo-design/todo-list-app.git
 cd todo-list-app
 ```
 
