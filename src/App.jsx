@@ -495,13 +495,49 @@ function LeaveModal({ onStay, onLeave }) {
 // Main App
 // ─────────────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [screen, setScreen]       = useState("greeting");
-  const [userName, setUserName]   = useState("");
-  const [tasks, setTasks]         = useState([]);
+  // ── Load from localStorage on first render ──────────────────────────────
+  // Instead of starting with an empty array, we check localStorage first.
+  // If tasks were saved before, we load them. If not, we start with [].
+  // JSON.parse converts the saved string back into a JavaScript array.
+  const [tasks, setTasks] = useState(() => {
+    const savedTasks = localStorage.getItem("tasks");
+    return savedTasks ? JSON.parse(savedTasks) : [];
+  });
+
+  // Same for userName — if the user already entered their name before,
+  // we skip the greeting screen and go straight to the main app.
+  const [screen, setScreen] = useState(() => {
+    const savedName = localStorage.getItem("userName");
+    return savedName ? "main" : "greeting";
+  });
+
+  const [userName, setUserName] = useState(() => {
+    return localStorage.getItem("userName") || "";
+  });
+
   const [filter, setFilter]       = useState("all");
   const [showAdd, setShowAdd]     = useState(false);
   const [editTask, setEditTask]   = useState(null);
   const [showLeave, setShowLeave] = useState(false);
+
+  // ── Save tasks to localStorage every time they change ───────────────────
+  // useEffect watches the tasks array. Every time a task is added,
+  // deleted, toggled or edited, this runs and saves the updated
+  // list to localStorage. JSON.stringify converts the array to a string
+  // because localStorage can only store strings, not arrays or objects.
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  // ── Save userName to localStorage when it is set ────────────────────────
+  // Every time userName changes we save it. This means next time
+  // the user opens the app their name is remembered and they go
+  // straight to the main screen skipping the greeting.
+  useEffect(() => {
+    if (userName) {
+      localStorage.setItem("userName", userName);
+    }
+  }, [userName]);
 
   // Browser tab close warning
   useEffect(() => {
@@ -517,6 +553,17 @@ export default function App() {
 
   // ── Actions ──────────────────────────────────────────────────────────────
   const startApp = () => { if (userName.trim()) setScreen("main"); };
+
+  // resetApp clears everything from localStorage and sends the user
+  // back to the greeting screen. Useful if someone else wants to
+  // use the app or the user wants to start fresh.
+  const resetApp = () => {
+    localStorage.removeItem("tasks");
+    localStorage.removeItem("userName");
+    setTasks([]);
+    setUserName("");
+    setScreen("greeting");
+  };
 
   const addTask = ({ text, dueDate, dueTime, notes }) => {
     setTasks(prev => [...prev, {
@@ -599,6 +646,14 @@ export default function App() {
             <div style={S.headerDate}>{getHeaderDate()}</div>
             <div style={S.headerTitle}>My Todo List</div>
             <div style={S.headerWelcome}>Hi {userName}, what are we working on today?</div>
+            {/* Switch user button — clears localStorage and goes back to greeting */}
+            <div
+              onClick={resetApp}
+              title="Switch user"
+              style={{ position:"absolute", bottom:12, right:20, background:"rgba(255,255,255,0.15)", borderRadius:20, padding:"4px 12px", fontSize:11, fontWeight:700, cursor:"pointer", color:"rgba(255,255,255,0.7)" }}
+            >
+              ↩ Switch User
+            </div>
             <div style={S.headerCount}>
               {active.length === 1 ? "1 remaining" : `${active.length} remaining`}
             </div>
