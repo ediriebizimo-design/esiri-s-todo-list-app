@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     FILE: client/public/index.html
+     PURPOSE: This is the ONE real HTML page in the entire app.
+     React is a "Single Page Application" (SPA) — meaning
+     there is only ever one HTML file. React dynamically
+     swaps content in and out of the <div id="root"> below.
+     ============================================================ -->
+
+<!-- Line 1: Tells the browser this is an HTML5 document -->
+
+<!-- Line 2: <html lang="en"> sets the page language to English.
+     This helps screen readers and search engines. -->
+<html lang="en">
+  <head>
+    <!-- Line 5: charset UTF-8 supports all characters including
+         emojis — important since we use emojis in our task icons -->
+    <meta charset="utf-8" />
+
+    <!-- Line 8: viewport meta tag — makes the app look correct
+         on mobile phones. width=device-width means use the
+         phone's actual screen width. initial-scale=1 means
+         no zoom on load. Without this, mobile browsers zoom out
+         and your app looks tiny. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Line 13: theme-color sets the browser toolbar color
+         on Android Chrome to match our purple brand color -->
+    <meta name="theme-color" content="#6c3fcf" />
+
+    <!-- Line 16: The tab title shown in the browser -->
+    <title>My Todo List</title>
+
+    <!-- Line 19-22: Loads the Nunito font from Google Fonts.
+         We use font-display=swap so text shows immediately
+         in a fallback font while Nunito loads — prevents
+         invisible text during page load. -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Line 26: noscript shows a message if the user's
+         browser has JavaScript disabled. React requires JS
+         so the app cannot function without it. -->
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- Line 31: THIS IS THE MOST IMPORTANT LINE.
+         This empty div with id="root" is where React mounts
+         the entire application. In index.js we call:
+         document.getElementById("root")
+         and inject all our React components into here.
+         When the app runs, this div fills with all your
+         task list content. -->
+    <div id="root"></div>
+  </body>
+</html>

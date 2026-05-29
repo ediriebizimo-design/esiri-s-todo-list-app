@@ -1,0 +1,35 @@
+/* ============================================================
+   FILE: client/src/index.css
+   PURPOSE: Global CSS that applies to the entire app.
+   These are base resets and font settings.
+   The rest of the styling is done inside App.jsx using
+   CSS-in-JS (JavaScript style objects).
+   ============================================================ */
+
+/* Line 1-5: Box-sizing reset
+   By default, browsers add padding and border ON TOP of
+   the width you set. 'border-box' includes padding and
+   border INSIDE the width — much more predictable. */
+* {
+  box-sizing: border-box;
+}
+
+/* Line 7-12: Body reset
+   margin: 0 removes the default white gap browsers add
+   around pages. padding: 0 removes default spacing.
+   font-family sets Nunito as the default font everywhere.
+   -webkit-font-smoothing makes text look crisper on Mac. */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Line 14-17: Code font
+   Any <code> tags in the app will use a monospace font.
+   This is a sensible default for displaying code snippets. */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}

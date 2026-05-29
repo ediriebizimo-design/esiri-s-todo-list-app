@@ -1,0 +1,25 @@
+{
+  "name": "todo-list-server",
+  "version": "1.0.0",
+  "description": "Express + MongoDB backend for the Todo List App",
+  "main": "index.js",
+
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --testPathPattern=tests"
+  },
+
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3"
+  },
+
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "nodemon": "^2.0.22",
+    "supertest": "^6.3.3"
+  }
+}
